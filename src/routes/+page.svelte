@@ -50,7 +50,7 @@ const products = [
   <h1 class="page-title">Welcome to E(vil)-Commerce</h1>
   <div class="product-container">
     {#each products as product}
-      <div class="product">
+      <a class="product" href="/items/{product.id}">
         <img src={product.image} />
         <div class="product-description">
           <div>{product.name}</div>
@@ -63,7 +63,7 @@ const products = [
           </div>
           <div class="delivery">FREE* anytime delivery</div>
         </div>
-      </div>
+      </a>
     {/each}
   </div>
 </div>
@@ -91,6 +91,8 @@ const products = [
     margin: 4px;
     border: 1px solid #EEEEEE;
     border-radius: 6px;
+    color: #0F1111;
+    text-decoration: none;
   }
 
   img {
