@@ -51,6 +51,8 @@ import { products } from '$lib/data.js';
     margin: 4px;
     border: 1px solid #EEEEEE;
     border-radius: 6px;
+    color: #0F1111;
+    text-decoration: none;
   }
 
   img {
@@ -59,7 +61,6 @@ import { products } from '$lib/data.js';
     object-position: center; /* Center the image within the element */
     object-fit:cover;
     background-color: #0F1111;
-
   }
   .product-description {
     width: 100%;
