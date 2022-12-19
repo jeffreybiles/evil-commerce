@@ -3,6 +3,7 @@
 
   import { page } from '$app/stores'
   import { products } from '$lib/data';
+    import Price from '$lib/Price.svelte';
 
   const product = products.find(p => p.id == $page.params.item_id)
 </script>
@@ -15,10 +16,7 @@
         {#each (new Array(5).fill('')) as star}
           <Icon icon="material-symbols:star" />
         {/each}
-        <div class="price">
-          <span class="price-symbol">$</span>
-          <span class="price-number">{product.price}</span>
-        </div>
+        <Price productPrice={product.price} />
         <div class="description">Here is a longer description.</div>
 
         <button class="add-to-cart">Add to Cart</button>
@@ -65,19 +63,6 @@
   }
   .product-description .description {
     font-size: 16px;
-  }
-  .price {
-    cursor: pointer;
-    font-size: 4px; /* This is so that the space betwen the $ and the price is smaller  */
-  }
-  .price-symbol {
-    font-size: 13px;
-    position: relative;
-    top: -0.75em;
-  }
-  .price-number {
-    font-size: 28px;
-    font-weight: 400; 
   }
   .order-details {
     padding: 8px;

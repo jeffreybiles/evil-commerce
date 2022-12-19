@@ -1,6 +1,7 @@
 <script>
 import Icon from '@iconify/svelte';
 import { products } from '$lib/data';
+import Price from '$lib/Price.svelte';
 </script>
 
 <div class="page-wrapper">
@@ -14,10 +15,7 @@ import { products } from '$lib/data';
           {#each new Array(5) as star}
             <Icon icon="material-symbols:star" />
           {/each}
-          <div class="price">
-            <span class="price-symbol">$</span>
-            <span class="price-number">{product.price}</span>
-          </div>
+          <Price productPrice={product.price} />
           <div class="delivery">FREE* anytime delivery</div>
         </div>
       </a>
@@ -62,19 +60,6 @@ import { products } from '$lib/data';
   }
   .product-description {
     width: 100%;
-  }
-  .price {
-    cursor: pointer;
-    font-size: 4px; /* This is so that the space betwen the $ and the price is smaller  */
-  }
-  .price-symbol {
-    font-size: 13px;
-    position: relative;
-    top: -0.75em;
-  }
-  .price-number {
-    font-size: 28px;
-    font-weight: 400; 
   }
 
   .delivery {
