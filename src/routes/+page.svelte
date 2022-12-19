@@ -1,4 +1,6 @@
 <script>
+import Icon from '@iconify/svelte';
+
 const products = [
     {
       id: 12,
@@ -46,6 +48,10 @@ const products = [
         <img/>
         <div class="product-description">
           <div>{product.name}</div>
+
+          {#each (new Array(5).fill('')) as star}
+            <Icon icon="material-symbols:star" />
+          {/each}
 
           <div class="price">
             <span class="price-symbol">$</span>
