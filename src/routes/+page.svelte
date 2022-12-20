@@ -5,7 +5,7 @@ import Price from '$lib/Price.svelte';
 </script>
 
 <div class="page-wrapper">
-  <h1 class="page-title">Welcome to E(vil)-Commerce</h1>
+  <h1 class="page-title">Welcome to E(vil)-Commerce!</h1>
   <div class="product-container">
     {#each products as product}
       <a class="product" href="/items/{product.id}">
