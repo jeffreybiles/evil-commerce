@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Icon from '@iconify/svelte';
 import { products } from '$lib/data';
 import Price from '$lib/Price.svelte';
