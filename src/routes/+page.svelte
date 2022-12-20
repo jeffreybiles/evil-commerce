@@ -1,47 +1,37 @@
-<script>
-const products = [
+<script lang="ts">
+type Implementation = {
+  framework: 'SvelteKit 1.0' | 'Nuxt 3' | 'Next 13' | 'Remix 1.9',
+  githubUrl: string,
+  youtubeUrl: string,
+}
+type Lesson = {
+  name: string,
+  exampleSubdomain: string,
+  implementations: Implementation[],
+  comingSoon?: boolean,
+}
+
+const lessons: Lesson[] = [
     {
-      id: 12,
-      name: 'Zynga Credits',
-      price: 29,
-    },
-    {
-      id: 92,
-      name: '1-way plane ticket to Las Vegas',
-      price: 174,
-    },
-    {
-      id: 73,
-      name: 'Roundup Weedkiller',
-      price: 12,
-    },
-    {
-      id: 66,
-      name: 'Seed Oils',
-      price: 4
-    },
-    {
-      id: 69,
-      name: "Oxycontin",
-      price: 87,
-    },
-    {
-      id: 666,
-      name: 'H****r Memorabilia',
-      price: 62,
-    },
-    {
-      id: 1,
-      name: 'Nuclear Warhead (3-bomb value pack!)',
-      price: 873_249
-    },
+      name: 'Lesson 01 - Intro to Components and Routing',
+      exampleSubdomain: 'lesson-01',
+      implementations: [
+        {
+          framework: 'SvelteKit 1.0',
+          githubUrl: 'https://github.com/jeffreybiles/evil-commerce/commits/lesson-01',
+          youtubeUrl: '',
+        },
+      ]
+    }
   ]
 </script>
 
 <h1>Welcome to E(vil)-Commerce</h1>
-{#each products as product}
-  <h2>{product.name}</h2>
-  <p>${product.price}</p>
+{#each lessons as lesson}
+  <h2>{lesson.name}</h2>
+  <!-- TODO - link to the subdomain -->
+  <!-- TODO - put framework icons for each of the implementations that are available, maybe direct links to the github repo and videos -->
+  <!-- TODO - if comingSoon is true, then style it differently -->
 {/each}
 <style>
 
