@@ -2,6 +2,7 @@
   import type { PageData } from './$types';
   import BaseModal from "$lib/BaseModal.svelte";
   import type { Lesson } from './+layout.server';
+    import Icon from '@iconify/svelte';
 
   export let data: PageData;
   const { lesson, previousLesson, nextLesson }: { lesson: Lesson, previousLesson: Lesson, nextLesson: Lesson} = data;
@@ -16,7 +17,7 @@
 {#if lessonModalOpen}
   <BaseModal close={() => lessonModalOpen = false}>
     <div class="modal-content">
-      <h1>{lesson.name}</h1>
+      <h1 class="lesson-title">{lesson.name}</h1>
 
       {#if lesson.description}
         <div class="description">
@@ -36,7 +37,7 @@
       </div>
       <div class="content">
         <div class="button-links">
-          <a class="button-link" href={selectedImplementation?.githubUrl}>{lesson.exampleSubdomain} branch</a>
+          <a class="button-link" href={selectedImplementation?.githubUrl}>{lesson.exampleSubdomain} code</a>
           <a class="button-link" href="https://www.youtube.com/watch?v={selectedImplementation?.youtubeId}">Watch on YouTube</a>
         </div>
         <div class="video">
@@ -55,10 +56,14 @@
         <div class="previous-button">
           {#if previousLesson}
             <a class="button" href="https://{previousLesson?.exampleSubdomain}.evil-commerce.com/">
+              <Icon icon="carbon:arrow-left" />
               Previous
             </a>
           {:else}
-            <div class="button disabled">Previous</div>
+            <div class="button disabled">
+              <Icon icon="carbon:arrow-left" />
+              Previous
+            </div>
           {/if}
         </div>
         <div class="index-button">
@@ -68,9 +73,13 @@
           {#if nextLesson}
             <a class="button" href="https://{nextLesson?.exampleSubdomain}.evil-commerce.com/">
               Next
+              <Icon icon="carbon:arrow-right" />
             </a>
           {:else}
-            <div class="button disabled">Next</div>
+            <div class="button disabled">
+              Next
+              <Icon icon="carbon:arrow-right" />
+            </div>
           {/if}
         </div>
       </div>
@@ -100,6 +109,13 @@
     border-radius: 8px;
     box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.7);
     border: none;
+  }
+
+  .lesson-title {
+    margin: 16px 0;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: sans-serif;
   }
 
   .description {
@@ -170,9 +186,15 @@
     display: flex;
     justify-content: flex-start;
   }
+  .previous-button :global(.iconify) {
+    margin-right: 8px;
+  }
   .next-button {
     display: flex;
     justify-content: flex-end;
+  }
+  .next-button :global(.iconify) {
+    margin-left: 8px;
   }
   .index-button {
     display: flex;
@@ -186,9 +208,18 @@
     cursor: pointer;
     border: none;
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
   .button.disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+  .button:hover, .button-link:hover, .implementation-tab:hover {
+    background-color: #555555;
+    color: white;
+  }
+  .button, .button-link, .implementation-tab {
+    font-family: sans-serif;
   }
 </style>
